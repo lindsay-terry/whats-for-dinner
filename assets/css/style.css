@@ -1,0 +1,86 @@
+*{
+    font-family: Georgia, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+:root{
+    --red: #872714ff;
+    --olive: #513E1Dff;
+    --gold: #C47721ff;
+    --tan: #9D6C5Eff;
+    --brown: #350000ff;
+}
+
+body {
+    display:grid;
+    grid-template-columns: .5fr 1.75fr 1.75fr;
+    grid-template-rows: 1fr 2fr .5fr;
+    min-height: 100svh;
+}
+
+header {
+    grid-column: 1/-1;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    background-image: url(../images/vegetables.jpg);
+    background-position: 20% 15%;
+}
+
+header h1 {
+    background-color: var(--red);
+    font-size: 3.5rem;
+    margin: auto;
+    max-width: max-content;
+    padding:.5rem;
+}
+
+header p {
+    background-color: var(--tan);
+    font-size: 1.5rem;
+    margin: auto;
+    max-width: max-content;
+    padding:.5rem;
+}
+
+main {
+    grid-area: 2/3;
+}
+
+footer {
+    grid-column: 1/-1;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.generate {
+    display: flex;
+    flex-direction:column; 
+    justify-content: space-around;
+    padding: 1rem;
+    background-color: var(--gold);
+    border: solid 2px var(--olive);
+
+}
+
+.generate-button {
+    background-color: var(--red);
+    color: white;
+    padding: .5rem;
+    border: solid 2px var(--olive);
+    border-radius: .5rem;
+
+}
+
+.generate-button:hover {
+    color: var(--tan);
+}
+
+.food {
+    grid-area: 2
+
+    border: solid 2px var(--olive);
+}
+
+.drink {
+    grid-area: right;
+}
