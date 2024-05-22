@@ -13,16 +13,21 @@
         <h1>What's For Dinner?</h1>
         <p>The age old question, finally solved.</p>
     </header>
-    <section class="generate">  <!-- Section for the buttons -->
+    <section class="generate">  
         <button class="generate-button">
             Generate a Meal
         </button>
         <button class="generate-button">
             Generate a Drink
         </button>
-        <button class="generate-button">
-            Saved Recipes
-        </button>
+        <button class="generate-button" data-open="exampleModal1"> Saved Recipes</button>
+        <div class="reveal" id="exampleModal1" data-reveal>
+            <h1>Saved Meals</h1>
+            <p class="lead">Display Meals Here</p>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
     </section>
     <main>
         <div class="food-drink">  <!-- To display the food -->
@@ -36,6 +41,11 @@
     <footer>
         <h3>Made with &hearts;</h3>
     </footer>
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/js/foundation.min.js" crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
