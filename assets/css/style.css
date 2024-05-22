@@ -14,9 +14,8 @@
   background-color: var(--tan);
 }
 
-
 .large-article-header {
-    background: url("../images/vegetables.jpg") no-repeat 50% 35%;
+    background: url("../images/vegetables.jpg") no-repeat 50% 49%;
     background-size: cover;
     height: 31.25rem;
     position: relative;
@@ -87,104 +86,7 @@
             justify-content: space-between;
   }
   
-  .large-article-header-content .article-details a {
-    color: #fefefe;
-  }
-  
-  .large-article-header-content .article-author {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin: 1rem 0;
-  }
-  
-  .large-article-header-content .article-author img {
-    border-radius: 3.125rem;
-  }
-  
-  .large-article-header-content .article-author a {
-    margin-left: 1rem;
-  }
-  
-  
-.holy-grail-grid {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 3fr;
-        grid-template-columns: 1fr 3fr;
-    -ms-grid-rows: 1fr 8fr 1fr;
-        grid-template-rows: 1fr 8fr 1fr;
-    grid-gap: 20px;
-    height: 100vh;
-  }
-  
-  @media screen and (max-width: 60em) {
-    .holy-grail-grid {
-      -ms-grid-rows: 2fr 1fr 5fr 1fr;
-          grid-template-rows: 2fr 1fr 5fr 1fr;
-    }
-  }
-  
-  .holy-grail-header,
-  .holy-grail-left,
-  .holy-grail-middle,
-  .holy-grail-right,
-  .holy-grail-footer {
-    padding: 1rem;
-    border: 1px solid #ededed;
-    background-color: #ededed;
-  }
-  
-  .holy-grail-header {
-    -ms-grid-column: 1;
-        grid-column-start: 1;
-    grid-column-end: 4;
-    -ms-grid-row: 1;
-        grid-row-start: 1;
-  }
-  
-  @media screen and (max-width: 60em) {
-    .holy-grail-left {
-      -ms-grid-row: 2;
-          grid-row-start: 2;
-      -ms-grid-column: 1;
-          grid-column-start: 1;
-      grid-column-end: 4;
-      display: flex;
-      flex
-    }
-  }
-  
-  @media screen and (max-width: 60em) {
-    .holy-grail-middle {
-      -ms-grid-row: 3;
-          grid-row-start: 3;
-      -ms-grid-column: 1;
-          grid-column-start: 1;
-      grid-column-end: ;
-    }
-  }
-  
-  @media screen and (max-width: 60em) {
-    .right-nav {
-      -ms-grid-row: 4;
-          grid-row-start: 4;
-      -ms-grid-column: 1;
-          grid-column-start: 1;
-      grid-column-end: 4;
-    }
-  }
-  
-  .holy-grail-footer {
-    -ms-grid-column: 1;
-        grid-column-start: 1;
-    grid-column-end: 4;
-  }
-  
-  
+  /* footer code to review */
 .social-footer {
     padding: 1rem;
     background: #8a8a8a;
@@ -212,80 +114,3 @@
     color: #4a4a4a;
     transition: color 0.3s ease-in;
   }
-  
-  
-
-/* body {
-    display:grid;
-    grid-template-columns: .5fr 1.75fr 1.75fr;
-    grid-template-rows: 1fr 2fr .5fr;
-    min-height: 100svh;
-}
-
-header {
-    grid-column: 1/-1;
-    text-align: center;
-    color: white;
-    padding: 2rem;
-    background-image: url(../images/vegetables.jpg);
-    background-position: 20% 15%;
-}
-
-header h1 {
-    background-color: var(--red);
-    font-size: 3.5rem;
-    margin: auto;
-    max-width: max-content;
-    padding:.5rem;
-}
-
-header p {
-    background-color: var(--tan);
-    font-size: 1.5rem;
-    margin: auto;
-    max-width: max-content;
-    padding:.5rem;
-}
-
-main {
-    grid-area: 2/3;
-}
-
-footer {
-    grid-column: 1/-1;
-    padding: 1rem;
-    margin: 1rem;
-}
-
-.generate {
-    display: flex;
-    flex-direction:column; 
-    justify-content: space-around;
-    padding: 1rem;
-    background-color: var(--gold);
-    border: solid 2px var(--olive);
-
-}
-
-.generate-button {
-    background-color: var(--red);
-    color: white;
-    padding: .5rem;
-    border: solid 2px var(--olive);
-    border-radius: .5rem;
-
-}
-
-.generate-button:hover {
-    color: var(--tan);
-}
-
-.food {
-    grid-area: 2
-
-    border: solid 2px var(--olive);
-}
-
-.drink {
-    grid-area: right;
-} */
