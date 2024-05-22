@@ -10,6 +10,10 @@
     --brown: #350000ff;
 }
 
+.custom-btn-clr {
+  background-color: var(--tan);
+}
+
 
 .large-article-header {
     background: url("../images/vegetables.jpg") no-repeat 50% 35%;
