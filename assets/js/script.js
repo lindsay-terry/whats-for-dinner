@@ -1,4 +1,4 @@
-// $(document).foundation(); // Allows modal to open
+$(document).foundation(); // Allows modal to open
 
 
 
