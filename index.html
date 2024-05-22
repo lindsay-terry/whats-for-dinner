@@ -10,42 +10,70 @@
 
   <body>
     <header>
-        <h1>What's For Dinner?</h1>
-        <p>The age old question, finally solved.</p>
-    </header>
-    <section class="generate">  
-        <button class="generate-button">
-            Generate a Meal
-        </button>
-        <button class="generate-button">
-            Generate a Drink
-        </button>
-        <button class="generate-button" data-open="exampleModal1"> Saved Recipes</button>
-        <div class="reveal" id="exampleModal1" data-reveal>
-            <h1>Saved Meals</h1>
-            <p class="lead">Display Meals Here</p>
-            <button class="close-button" data-close aria-label="Close modal" type="button">
-              <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="row expanded collapse">
+            <div class="column">
+              <div class="large-article-header">
+                <div class="large-article-header-content">
+                  <div class="center-container">
+                    <div class="article-title">
+                      <h1>What's For Dinner?</h1>
+                    </div>
+                    <div class="article-details">
+                        <p>The age old question, finally solved.</p>
+                      <div class="article-comments">
+                        <a href="#"><i class="fa fa-comment" aria-hidden="true"></i> 3 Comments</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-    </section>
-    <main>
-        <div class="food-drink">  <!-- To display the food -->
-            Food
+    </header>
+    <div class="grid-container">
+        <div class="grid-x">
+            <section class="cell-3">  <!-- Section for the buttons -->
+                <button class="cell">
+                    Generate a Meal
+                </button>
+                <button class="cell">
+                    Generate a Drink
+                </button>
+                <button class="cell">
+                    Saved Recipes
+                </button>
+            </section>
+            <main class="cell large-auto">
+                <div class="grid-x">
+                    <div class="cell large-auto">  <!-- To display the food -->
+                    Food
 
+                    </div>
+                    <div class="cell large-auto">  <!-- To display the drinks -->
+                    Drink
+                    </div>
+                </div>
+            </main>
         </div>
-        <div class="food-drink">  <!-- To display the drinks -->
-            Drink
-        </div>
-    </main>
-    <footer>
-        <h3>Made with &hearts;</h3>
-    </footer>
-    <script
-  src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-  crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+
+    </div>
+    <!-- <footer>
+        <div class="cell shrink footer">
+        <h3>Made with &hearts;</h3> -->
+        <footer class="social-footer">
+            <div class="social-footer-left">
+              <a href="#"><img class="logo" src="https://placehold.it/150x30"></a>
+            </div>
+            <div class="social-footer-icons">
+              <ul class="menu simple">
+                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </footer>
+         
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
