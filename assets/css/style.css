@@ -1,105 +1,118 @@
 *{
-    font-family: Georgia, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: Georgia, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 :root{
-    --red: #872714ff;
-    --olive: #513E1Dff;
-    --gold: #C47721ff;
-    --tan: #9D6C5Eff;
-    --brown: #350000ff;
+  --red: #872714ff;
+  --olive: #513E1Dff;
+  --gold: #C47721ff;
+  --tan: #9D6C5Eff;
+  --brown: #350000ff;
 }
 
 .custom-btn-clr {
-  background-color: var(--tan);
+background-color: var(--tan);
 }
 
 .large-article-header {
-    background: url("../images/vegetables.jpg") no-repeat 50% 49%;
-    background-size: cover;
-    height: 31.25rem;
-    position: relative;
+  background: url("../images/vegetables.jpg") no-repeat 50% 49%;
+  background-size: cover;
+  height: 31.25rem;
+  position: relative;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .large-article-header {
+    height: 20.83333rem;
   }
-  
-  @media screen and (max-width: 39.9375em) {
-    .large-article-header {
-      height: 20.83333rem;
-    }
-  }
-  
+}
+
+.large-article-header-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  bottom: 3.125rem;
+  left: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 39.9375em) {
   .large-article-header-content {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    position: absolute;
-    bottom: 3.125rem;
-    left: 0;
-    right: 0;
+    bottom: 1.25rem;
   }
-  
-  @media screen and (max-width: 39.9375em) {
-    .large-article-header-content {
-      bottom: 1.25rem;
-    }
-  }
-  
+}
+
+.large-article-header-content .center-container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 39.9375em) {
   .large-article-header-content .center-container {
-    width: 50%;
-    margin: 0 auto;
+    width: 100%;
+    padding: 0 1.25rem;
   }
-  
-  @media screen and (max-width: 39.9375em) {
-    .large-article-header-content .center-container {
-      width: 100%;
-      padding: 0 1.25rem;
-    }
-  }
-  
-  .large-article-header-content {
-    color: #fefefe;
-  }
-  
+}
+
+.large-article-header-content {
+  color: #fefefe;
+}
+
+.large-article-header-content .article-title h1 {
+  line-height: 3.125rem;
+  color: #fefefe;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 39.9375em) {
   .large-article-header-content .article-title h1 {
-    line-height: 3.125rem;
-    color: #fefefe;
-    font-weight: 600;
+    line-height: 1.875rem;
   }
-  
-  @media screen and (max-width: 39.9375em) {
-    .large-article-header-content .article-title h1 {
-      line-height: 1.875rem;
-    }
-  }
-  
-  .large-article-header-content .article-details {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  
-  /* footer code to review */
+}
+
+.large-article-header-content .article-details {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .social-footer {
-    padding: 1rem;
-    background: #C47721ff;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
+          height: 6rem;
+          background-color: #C47721ff;
+          color: #fff;
+          padding: 1rem;
+          font-size: 1.2rem;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.social-footer .menu a {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.social-footer .menu a:hover {
+  color: #000000;
+  font-size: 1.2rem;
+}
+
   
   .social-footer .social-footer-icons li:last-of-type {
     margin-right: 0;
