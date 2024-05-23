@@ -78,11 +78,39 @@ function displayDrinkList(drinks) {
         const drinkEntry = document.createElement('div');
         const drinkTitle = document.createElement('h5');
 
+        drinkTitle.setAttribute("class", "drink-title");
+        drinkTitle.setAttribute("data-drink-id", drinks.idDrink);
+
         drinkTitle.textContent = drinks.strDrink;
         drinkEntry.append(drinkTitle);
         drinkDiv.append(drinkEntry);
     }
 }
+
+// might change name of this function
+// Purpose is to retrieve ID from clicked on drink, from the rendered list
+function renderDrinkCard(event) {
+    
+    const drinkId = event.target.getAttribute("data-drink-id");
+    console.log(drinkId);
+
+
+    const drinkIdUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
+    fetch(drinkIdUrl)
+    .then(function(response) {
+    return response.json();
+    })
+    .then(function (data) {
+    console.log(data);
+    })
+    }
+
+
+// Event listener to render clicked on drink
+$('#drink-div').on("click", ".drink-title", renderDrinkCard);
+
+
+
 //Fetch template
 // fetch()
 // .then(function(response) {
