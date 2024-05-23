@@ -35,9 +35,29 @@
                     <button class="button custom-btn-clr">
                         Generate a Meal
                     </button>
-                    <button class="button custom-btn-clr">
+                    <!-- Button for generating the drink list -->
+                    <button class="button custom-btn-clr" type="button" data-toggle="form-dropdown">
                         Generate a drink
-                    </button>
+                    </button> 
+                    <!-- Dropdown menu for drink selection -->
+                    <div class="dropdown-pane" id="form-dropdown" data-dropdown>
+                        <label>Choose an ingredient:
+                            <select id="drink-options">
+                                <option value="">Select an ingredient</option>
+                                <option value="Non_Alcoholic">Non-Alcoholic</option>
+                                <option value="Gin">Gin</option>
+                                <option value="Tequila">Tequila</option>
+                                <option value="Vodka">Vodka</option>
+                                <option value="Rum">Rum</option>
+                                <option value="Whiskey">Whiskey</option>
+                                <option value="Bourbon">Bourbon</option>
+                            </select>
+                            <!-- Button to confirm drink type  -->
+                            <button type="submit" class="button small custom-btn-clr" id="drink-form" for="drink-options" data-toggle="form-dropdown">
+                                Submit
+                            </button>
+                        </label>
+                    </div>
                     <button class="button custom-btn-clr" data-open="exampleModal1">
                         Saved Recipes
                     </button>
@@ -58,7 +78,8 @@
                     </div>
                     <div class="cell small-12 medium-6 large-6">
                         <div class="grid-x grid-frame align-center-middle" style="height: 50vh;">
-                            Drink
+                            <div class="medium-cell-block-y" id="drink-div"></div>
+                            
                         </div>
                     </div>
                 </div>
