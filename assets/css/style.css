@@ -14,6 +14,14 @@
 background-color: var(--tan);
 }
 
+.custom-btn-clr:hover {
+  background-color: var(--red);
+}
+
+.custom-btn-clr:focus{
+  background-color: var(--brown);
+}
+
 .large-article-header {
   background: url("../images/vegetables.jpg") no-repeat 50% 49%;
   background-size: cover;
