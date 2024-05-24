@@ -32,7 +32,6 @@ fetch(mealApiUrl)
 
 
 
-
 //Drink card coding
 //Event listener for submit button in dropdown menu
 $('#drink-form').on('click', function(event) {
