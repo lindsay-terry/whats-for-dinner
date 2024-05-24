@@ -10,10 +10,55 @@ fetch(mealApiUrl)
 })
 .then(function (data) {
     console.log(data);
+    createMealCard(data);
 })
 
 //Meal card coding here
+const cardsContainer = document.querySelector("#cards-container"); //connects to div id in HTML where we will display the data
 
+function createMealCard (meals) { //function for creating card elements
+
+        console.log(meals.meals);
+        const mealsArray = meals.meals;
+        const mealData = mealsArray[0];
+       
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.classList.add('flex-container');
+
+        
+
+        const mealName = document.createElement('h4');
+        mealName.classList.add('card-divider');
+
+        const mealImg = document.createElement('img');
+        mealImg.setAttribute('src', `${mealsArray[0].strMealThumb}/preview`);
+        mealImg.setAttribute('style','width:200px; display:inline');
+
+        card.appendChild(mealName);
+        mealName.textContent = mealsArray[0].strMeal;
+
+        card.appendChild(mealImg);
+
+        const ingredientList = document.createElement('ul');
+       ingredientList.setAttribute('class', 'inline-list');
+       card.appendChild(ingredientList);
+
+        for (let i=1; i<=20; i++) {
+            const ingredient = mealData[`strIngredient${i}`];
+            const measurement = mealData[`strMeasure${i}`];
+        if (ingredient && measurement) {
+            console.log(`${measurement} ${ingredient}`);
+            
+            const ingredientArea = document.createElement('li');
+            ingredientArea.textContent = (`${measurement} ${ingredient}`);
+    
+            ingredientList.appendChild(ingredientArea);
+        }
+        }
+        cardsContainer.appendChild(card);
+
+    }
 
 
 
