@@ -3,19 +3,29 @@
 }
 
 :root{
-  --red: #872714ff;
-  --olive: #513E1Dff;
-  --gold: #C47721ff;
-  --tan: #9D6C5Eff;
-  --brown: #350000ff;
+    --cardinal: #b2313aff;
+    --sage: #cccba5ff;
+    --mint: #6fb28eff;
+    --orange: #ed8a4eff;
+    --dark-purple: #341827ff;  
 }
 
 .custom-btn-clr {
-background-color: var(--tan);
+background-color: var(--orange);
+border-radius:10px;:
+}
+
+.custom-btn-clr:hover {
+  background-color: var(--cardinal);
+}
+
+.custom-btn-clr:focus{
+  background-color: var(--dark-purple);
+  color: var(--sage);
 }
 
 .large-article-header {
-  background: url("../images/vegetables.jpg") no-repeat 50% 49%;
+  background: url("../images/fruit.jpg") no-repeat 50% 98%;
   background-size: cover;
   height: 31.25rem;
   position: relative;
@@ -88,7 +98,7 @@ background-color: var(--tan);
 
 .social-footer {
           height: 6rem;
-          background-color: #C47721ff;
+          background-color: var(--cardinal);
           color: #fff;
           padding: 1rem;
           font-size: 1.2rem;
