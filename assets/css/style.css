@@ -12,7 +12,6 @@
 
 .custom-btn-clr {
 background-color: var(--orange);
-border-radius:10px;:
 }
 
 .custom-btn-clr:hover {
@@ -96,6 +95,7 @@ border-radius:10px;:
           justify-content: space-between;
 }
 
+
 .social-footer {
           height: 6rem;
           background-color: var(--cardinal);
@@ -111,29 +111,25 @@ border-radius:10px;:
           -webkit-justify-content: space-between;
           -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 6rem;
+  background-color: var(--cardinal);
+  color: #fff;
+  padding: 1rem;
+  font-size: 1.2rem;
 }
 
 .social-footer .menu a {
   color: #fff;
-  font-size: 1rem;
-}
-
-.social-footer .menu a:hover {
-  color: #000000;
+  padding: 1rem;
   font-size: 1.2rem;
 }
 
-  
-  .social-footer .social-footer-icons li:last-of-type {
-    margin-right: 0;
-  }
-  
-  .social-footer .social-footer-icons .fa {
-    font-size: 1.3rem;
-    color: #fefefe;
-  }
-  
-  .social-footer .social-footer-icons .fa:hover {
-    color: #4a4a4a;
-    transition: color 0.3s ease-in;
-  }
+.social-footer .menu a {
+color: #fff;
+font-size: 1rem;
+}
+
+.social-footer .menu a:hover {
+color: #000000;
+font-size: 1.2rem;
+}

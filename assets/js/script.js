@@ -10,11 +10,55 @@ fetch(mealApiUrl)
 })
 .then(function (data) {
     console.log(data);
+    createMealCard(data);
 })
 
 //Meal card coding here
+const cardsContainer = document.querySelector("#cards-container"); //connects to div id in HTML where we will display the data
 
+function createMealCard (meals) { //function for creating card elements
 
+        console.log(meals.meals);
+        const mealsArray = meals.meals;
+        const mealData = mealsArray[0];
+       
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.classList.add('flex-container');
+
+        
+
+        const mealName = document.createElement('h4');
+        mealName.classList.add('card-divider');
+
+        const mealImg = document.createElement('img');
+        mealImg.setAttribute('src', `${mealsArray[0].strMealThumb}/preview`);
+        mealImg.setAttribute('style','width:200px; display:inline');
+
+        card.appendChild(mealName);
+        mealName.textContent = mealsArray[0].strMeal;
+
+        card.appendChild(mealImg);
+
+        const ingredientList = document.createElement('ul');
+       ingredientList.setAttribute('class', 'inline-list');
+       card.appendChild(ingredientList);
+
+        for (let i=1; i<=20; i++) {
+            const ingredient = mealData[`strIngredient${i}`];
+            const measurement = mealData[`strMeasure${i}`];
+        if (ingredient && measurement) {
+            console.log(`${measurement} ${ingredient}`);
+            
+            const ingredientArea = document.createElement('li');
+            ingredientArea.textContent = (`${measurement} ${ingredient}`);
+    
+            ingredientList.appendChild(ingredientArea);
+        }
+        }
+        cardsContainer.appendChild(card);
+
+    }
 
 
 
@@ -68,7 +112,6 @@ function fetchDrinkList() {
 
 //Display list of drinks on screen based on user selection
 function displayDrinkList(drinks) {
-    console.log(drinks.drinks);
     const drinksList = drinks.drinks;
     const drinkDiv = $('#drink-div');
     drinkDiv.empty();
@@ -87,13 +130,10 @@ function displayDrinkList(drinks) {
     }
 }
 
-// might change name of this function
 // Purpose is to retrieve ID from clicked on drink, from the rendered list
-function renderDrinkCard(event) {
-    
+//and use ID to access information required to create and render drink card
+function fetchDrinkInfo(event) {
     const drinkId = event.target.getAttribute("data-drink-id");
-    console.log(drinkId);
-
 
     const drinkIdUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
     fetch(drinkIdUrl)
@@ -101,13 +141,72 @@ function renderDrinkCard(event) {
     return response.json();
     })
     .then(function (data) {
-    console.log(data);
+    //call function to render drink card
+    renderDrinkCard(data);
     })
     }
 
+//create the elements associated with the drink card
+function createDrinkCard(drinks) {
+    const selectedDrink = drinks.drinks;
+
+    const drinkCard = document.createElement('div');
+    drinkCard.setAttribute('class', 'card');
+
+    const drinkHeader = document.createElement('div');
+    drinkHeader.setAttribute('class', 'card-divider');
+    drinkHeader.textContent = selectedDrink[0].strDrink;
+
+    const picIngredientDiv = document.createElement('div');
+    picIngredientDiv.setAttribute('class', 'flex-container');
+
+    const drinkPicture = document.createElement('img');
+    drinkPicture.setAttribute('src', `${selectedDrink[0].strDrinkThumb}/preview`);
+
+    const instructionDiv = document.createElement('div');
+    instructionDiv.setAttribute('class', 'card-section');
+    instructionDiv.textContent = selectedDrink[0].strInstructions;
+
+    const drinkIngredients = document.createElement('ul');
+
+    //Loop through ingredients and measurements to create elements for all that exist
+    for (let i=1; i <= 20; i++) {
+        const drinkChoice = selectedDrink[0];
+        const ingredient = drinkChoice[`strIngredient${i}`];
+        const measurement = drinkChoice[`strMeasure${i}`];
+
+        if (ingredient && measurement) {
+            console.log(`${measurement} ${ingredient}`);
+            const drinkIngredientsList = document.createElement('li');
+            drinkIngredientsList.textContent =(`${measurement} ${ingredient}`);
+            drinkIngredients.appendChild(drinkIngredientsList);
+        }
+    }
+
+    drinkCard.appendChild(drinkHeader);
+    drinkCard.appendChild(picIngredientDiv);
+    picIngredientDiv.appendChild(drinkPicture);
+    picIngredientDiv.appendChild(drinkIngredients);
+    drinkCard.appendChild(instructionDiv);
+    return drinkCard;
+}
+
+//function to render the drink card to screen
+function renderDrinkCard(drinks) {
+    const drinkDiv = $('#drink-div');
+    drinkDiv.empty();
+
+    //call function to create drink card and append to div
+    drinkDiv.append(createDrinkCard(drinks));
+
+
+    
+
+}
+
 
 // Event listener to render clicked on drink
-$('#drink-div').on("click", ".drink-title", renderDrinkCard);
+$('#drink-div').on("click", ".drink-title", fetchDrinkInfo);
 
 
 
