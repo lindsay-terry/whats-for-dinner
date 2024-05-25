@@ -23,6 +23,14 @@ background-color: var(--orange);
   color: var(--sage);
 }
 
+.custom-btn-clr:hover {
+  background-color: var(--red);
+}
+
+.custom-btn-clr:focus{
+  background-color: var(--brown);
+}
+
 .large-article-header {
   background: url("../images/fruit.jpg") no-repeat 50% 98%;
   background-size: cover;
@@ -97,20 +105,6 @@ background-color: var(--orange);
 
 
 .social-footer {
-          height: 6rem;
-          background-color: var(--cardinal);
-          color: #fff;
-          padding: 1rem;
-          font-size: 1.2rem;
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-align-items: center;
-          -ms-flex-align: center;
-          align-items: center;
-          -webkit-justify-content: space-between;
-          -ms-flex-pack: justify;
-          justify-content: space-between;
   height: 6rem;
   background-color: var(--cardinal);
   color: #fff;
@@ -120,16 +114,11 @@ background-color: var(--orange);
 
 .social-footer .menu a {
   color: #fff;
-  padding: 1rem;
   font-size: 1.2rem;
-}
-
-.social-footer .menu a {
-color: #fff;
-font-size: 1rem;
 }
 
 .social-footer .menu a:hover {
 color: #000000;
 font-size: 1.2rem;
 }
+
