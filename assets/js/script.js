@@ -102,6 +102,7 @@ function createMealCard (meals) {
         //create save button to save meal to local storage
         const saveMealButton = document.createElement('button');
         saveMealButton.setAttribute('class', 'button custom-btn-clr');
+        saveMealButton.setAttribute('data-meal-id', mealsArray[0].idMeal);
         saveMealButton.textContent = 'Save Recipe';
         //append button beneath meal card
         cardsContainer.appendChild(saveMealButton);
@@ -257,8 +258,13 @@ $('#drink-div').on('click', '.custom-btn-clr', function(event) {
 
 //To - Do: create event listener to save meals to local storage
 $('#cards-container').on('click', '.custom-btn-clr', function(event) {
-
-    
+    readMealStorage();
+    event.preventDefault();
+    const saveButton = event.target;
+    const savedId = saveButton.dataset.mealId;
+    savedMeals.push(savedId);
+    saveMealToStorage();
+    console.log(savedMeals);
 })
 
 
