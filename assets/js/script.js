@@ -34,8 +34,6 @@ const mealApiUrl = 'https://www.themealdb.com/api/json/v1/1/random.php';
 $('#meal-button').on('click', function(event) {
     event.preventDefault();
 
-    // $('#cards-container').empty();
-
     //fetch random meal and log data to console
     fetch(mealApiUrl)
     .then(function(response) {
@@ -48,13 +46,13 @@ $('#meal-button').on('click', function(event) {
 });
 
 //Meal card coding here
-//connects to div id in HTML where we will display the data
+//Displays cards in the div with ID "cards-container"
 const cardsContainer = document.querySelector("#cards-container"); 
 
 //function for creating card elements
 function createMealCard (meals) { 
-    // Clear existing meal cards
-    cardsContainer.innerHTML = '';
+        // Clears existing meal cards
+        cardsContainer.innerHTML = '';
 
         const mealsArray = meals.meals;
         const mealData = mealsArray[0];
@@ -65,8 +63,7 @@ function createMealCard (meals) {
         mealCard.setAttribute('data-meal-id', mealsArray[0].idMeal);
 
         const mealName = document.createElement('h5');
-        mealName.classList.add('card-divider');
-        mealCard.appendChild(mealName);
+        mealName.setAttribute('class','card-divider');
         mealName.textContent = mealsArray[0].strMeal;
 
         const mealImg = document.createElement('img');
@@ -74,12 +71,11 @@ function createMealCard (meals) {
         mealImg.setAttribute('style','height:200px;', 'display:inline');
 
         const addedIngredientDiv = document.createElement('div');
-        addedIngredientDiv.setAttribute('class', 'flex-container flex-child-auto');
-        addedIngredientDiv.appendChild(mealImg);
+        addedIngredientDiv.setAttribute('class', 'flex-container');
 
         const ingredientList = document.createElement('ul');
-        ingredientList.setAttribute('class','text-wrap'); 
 
+        //Loops through ingredients and measurements and displays them together on the card
         for (let i=1; i<=20; i++) {
             const ingredient = mealData[`strIngredient${i}`];
             const measurement = mealData[`strMeasure${i}`];
@@ -88,17 +84,19 @@ function createMealCard (meals) {
             const ingredientArea = document.createElement('li');
             ingredientArea.textContent = (`${measurement} ${ingredient}`);
             ingredientList.appendChild(ingredientArea);
-           
             }
         }
 
         const recipeInstructions = document.createElement('div');
         recipeInstructions.textContent = mealsArray[0].strInstructions 
         
+        //Appends children elements to the cards
+        mealCard.appendChild(mealName);
+        addedIngredientDiv.appendChild(mealImg);
         mealCard.appendChild(addedIngredientDiv); 
         addedIngredientDiv.appendChild(ingredientList);
         mealCard.appendChild(recipeInstructions);
-        
+
         cardsContainer.appendChild(mealCard);
 
         //create save button to save meal to local storage
@@ -109,14 +107,6 @@ function createMealCard (meals) {
         cardsContainer.appendChild(saveMealButton);
 
 }
-
-//function to render the meal card to the screen
-    // function renderMealCard(meals) {
-    // const mealDiv = $('#meal-div');
-    // mealDiv.empty();
-    // mealDiv.append(createMealCard(meals));
-
-// }
 
 //Drink card coding
 //Event listener for submit button in dropdown menu
