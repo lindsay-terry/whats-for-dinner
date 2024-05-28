@@ -4,45 +4,68 @@ $(document).foundation(); // Allows modal to open
 const mealApiUrl = 'https://www.themealdb.com/api/json/v1/1/random.php'; 
 
 //fetch random meal and log data to console
-fetch(mealApiUrl)
-.then(function(response) {
-    return response.json();
-})
-.then(function (data) {
-    console.log(data);
-    createMealCard(data);
-})
+// fetch(mealApiUrl)
+// .then(function(response) {
+//     return response.json();
+// })
+// .then(function (data) {
+//     console.log(data);
+//     createMealCard(data);
+// })
+
+
+// Event listener for the generate a meal button to create a card
+$('#meal-button').on('click', function(event) {
+    event.preventDefault();
+    fetch(mealApiUrl)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        createMealCard(data);
+    })
+});
 
 //Meal card coding here
-const cardsContainer = document.querySelector("#cards-container"); //connects to div id in HTML where we will display the data
+//connects to div id in HTML where we will display the data
+const cardsContainer = document.querySelector("#cards-container"); 
 
-function createMealCard (meals) { //function for creating card elements
+//function for creating card elements
+function createMealCard (meals) { 
 
         console.log(meals.meals);
         const mealsArray = meals.meals;
         const mealData = mealsArray[0];
        
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.classList.add('flex-container');
+        const mealCard = document.createElement('div');
+        mealCard.setAttribute('class', 'card');
 
-        
-
-        const mealName = document.createElement('h4');
+        const mealName = document.createElement('h5');
         mealName.classList.add('card-divider');
 
         const mealImg = document.createElement('img');
         mealImg.setAttribute('src', `${mealsArray[0].strMealThumb}/preview`);
-        mealImg.setAttribute('style','width:200px; display:inline');
+        mealImg.setAttribute('style','height:200px;', 'display:inline');
 
-        card.appendChild(mealName);
+        const recipeInstructions = document.createElement('div');
+
+        const addedIngredientDiv = document.createElement('div');
+        addedIngredientDiv.setAttribute('class', 'flex-container flex-child-auto');
+
+
+        // Appends elements to the card
+        mealCard.appendChild(mealName);
         mealName.textContent = mealsArray[0].strMeal;
+        mealCard.appendChild(addedIngredientDiv); 
 
-        card.appendChild(mealImg);
+        addedIngredientDiv.appendChild(mealImg);
 
         const ingredientList = document.createElement('ul');
-       ingredientList.setAttribute('class', 'inline-list');
-       card.appendChild(ingredientList);
+        ingredientList.setAttribute('class','text-wrap'); 
+        addedIngredientDiv.appendChild(ingredientList);
+
+      
 
         for (let i=1; i<=20; i++) {
             const ingredient = mealData[`strIngredient${i}`];
@@ -54,11 +77,26 @@ function createMealCard (meals) { //function for creating card elements
             ingredientArea.textContent = (`${measurement} ${ingredient}`);
     
             ingredientList.appendChild(ingredientArea);
+           
+            }
         }
-        }
-        cardsContainer.appendChild(card);
 
-    }
+        mealCard.appendChild(recipeInstructions);
+        recipeInstructions.textContent = mealsArray[0].strInstructions 
+
+        
+        cardsContainer.appendChild(mealCard);
+
+}
+
+
+//function to render the meal card to the screen
+    // function renderMealCard(meals) {
+    // const mealDiv = $('#meal-div');
+    // mealDiv.empty();
+    // mealDiv.append(createMealCard(meals));
+
+// }
 
 
 
