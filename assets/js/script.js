@@ -4,19 +4,22 @@ $(document).foundation(); // Allows modal to open
 const mealApiUrl = 'https://www.themealdb.com/api/json/v1/1/random.php'; 
 
 //fetch random meal and log data to console
-fetch(mealApiUrl)
-.then(function(response) {
-    return response.json();
-})
-.then(function (data) {
-    console.log(data);
-    createMealCard(data);
-})
+// fetch(mealApiUrl)
+// .then(function(response) {
+//     return response.json();
+// })
+// .then(function (data) {
+//     console.log(data);
+//     createMealCard(data);
+// })
+
 
 //Meal card coding here
-const cardsContainer = document.querySelector("#cards-container"); //connects to div id in HTML where we will display the data
+//connects to div id in HTML where we will display the data
+const cardsContainer = document.querySelector("#cards-container"); 
 
-function createMealCard (meals) { //function for creating card elements
+//function for creating card elements
+function createMealCard (meals) { 
 
         console.log(meals.meals);
         const mealsArray = meals.meals;
@@ -26,8 +29,6 @@ function createMealCard (meals) { //function for creating card elements
         card.classList.add('card');
         card.classList.add('flex-container');
 
-        
-
         const mealName = document.createElement('h4');
         mealName.classList.add('card-divider');
 
@@ -35,6 +36,7 @@ function createMealCard (meals) { //function for creating card elements
         mealImg.setAttribute('src', `${mealsArray[0].strMealThumb}/preview`);
         mealImg.setAttribute('style','width:200px; display:inline');
 
+    // Appends elements to the cards
         card.appendChild(mealName);
         mealName.textContent = mealsArray[0].strMeal;
 
