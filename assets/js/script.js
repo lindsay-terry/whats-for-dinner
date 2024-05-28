@@ -56,12 +56,13 @@ function createMealCard (meals) {
     // Clear existing meal cards
     cardsContainer.innerHTML = '';
 
-        console.log(meals.meals);
         const mealsArray = meals.meals;
         const mealData = mealsArray[0];
        
         const mealCard = document.createElement('div');
         mealCard.setAttribute('class', 'card');
+        //assign meal ID as data attribute to meal card
+        mealCard.setAttribute('data-meal-id', mealsArray[0].idMeal);
 
         const mealName = document.createElement('h5');
         mealName.classList.add('card-divider');
@@ -84,7 +85,6 @@ function createMealCard (meals) {
             const measurement = mealData[`strMeasure${i}`];
 
         if (ingredient && measurement) {
-            console.log(`${measurement} ${ingredient}`);
             const ingredientArea = document.createElement('li');
             ingredientArea.textContent = (`${measurement} ${ingredient}`);
             ingredientList.appendChild(ingredientArea);
@@ -100,6 +100,13 @@ function createMealCard (meals) {
         mealCard.appendChild(recipeInstructions);
         
         cardsContainer.appendChild(mealCard);
+
+        //create save button to save meal to local storage
+        const saveMealButton = document.createElement('button');
+        saveMealButton.setAttribute('class', 'button custom-btn-clr');
+        saveMealButton.textContent = 'Save Recipe';
+        //append button beneath meal card
+        cardsContainer.appendChild(saveMealButton);
 
 }
 
@@ -186,6 +193,8 @@ function createDrinkCard(drinks) {
 
     const drinkCard = document.createElement('div');
     drinkCard.setAttribute('class', 'card');
+    //Set ID as data attribute for saving to local storage if user chooses
+    drinkCard.setAttribute('data-drink-id', selectedDrink[0].idDrink);
 
     const drinkHeader = document.createElement('div');
     drinkHeader.setAttribute('class', 'card-divider');
@@ -210,7 +219,6 @@ function createDrinkCard(drinks) {
         const measurement = drinkChoice[`strMeasure${i}`];
 
         if (ingredient && measurement) {
-            console.log(`${measurement} ${ingredient}`);
             const drinkIngredientsList = document.createElement('li');
             drinkIngredientsList.textContent =(`${measurement} ${ingredient}`);
             drinkIngredients.appendChild(drinkIngredientsList);
@@ -230,17 +238,38 @@ function renderDrinkCard(drinks) {
     const drinkDiv = $('#drink-div');
     drinkDiv.empty();
 
+    //create save drink recipe button
+    const saveDrinkButton = document.createElement('button');
+    saveDrinkButton.textContent = 'Save Recipe';
+    saveDrinkButton.setAttribute('class', 'button custom-btn-clr');
+
     //call function to create drink card and append to div
     drinkDiv.append(createDrinkCard(drinks));
-
-
-    
-
+    //Set data attribute of drink ID to save button
+    saveDrinkButton.setAttribute('data-drink-id', drinks.drinks[0].idDrink);
+    //append save button to drinkDiv beneath created card
+    drinkDiv.append(saveDrinkButton);
 }
 
 
 // Event listener to render clicked on drink
 $('#drink-div').on("click", ".drink-title", fetchDrinkInfo);
+//Event listener to save drink recipe to local storage
+$('#drink-div').on('click', '.custom-btn-clr', function(event) {
+    readDrinkStorage();
+    event.preventDefault();
+    const saveButton = event.target;
+    const savedId = saveButton.dataset.drinkId;
+    savedDrinks.push(savedId);
+    saveDrinkToStorage();
+    console.log(savedDrinks);
+})
+
+//To - Do: create event listener to save meals to local storage
+$('#cards-container').on('click', '.custom-btn-clr', function(event) {
+
+    
+})
 
 
 
