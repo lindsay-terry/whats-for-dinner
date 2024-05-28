@@ -1,22 +1,39 @@
 $(document).foundation(); // Allows modal to open
 
+//setting up local storage for meals
+let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ||[];
+
+function readMealStorage() {
+    let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ||[];
+
+    return savedMeals;
+}
+
+function saveMealToStorage() {
+    localStorage.setItem('savedMeals', JSON.stringify(savedMeals));
+}
+
+//setting up local storage for drinks
+let savedDrinks = JSON.parse(localStorage.getItem('savedDrinks')) ||[];
+
+function readDrinkStorage() {
+    let savedDrinks = JSON.parse(localStorage.getItem('savedDrinks')) ||[];
+
+    return savedDrinks;
+}
+
+function saveDrinkToStorage() {
+    localStorage.setItem('savedDrinks', JSON.stringify(savedDrinks));
+}
+
+
 // URL to fetch random meal
 const mealApiUrl = 'https://www.themealdb.com/api/json/v1/1/random.php'; 
-
-//fetch random meal and log data to console
-// fetch(mealApiUrl)
-// .then(function(response) {
-//     return response.json();
-// })
-// .then(function (data) {
-//     console.log(data);
-//     createMealCard(data);
-// })
-
 
 // Event listener for the generate a meal button to create a card
 $('#meal-button').on('click', function(event) {
     event.preventDefault();
+    //fetch random meal and log data to console
     fetch(mealApiUrl)
     .then(function(response) {
         return response.json();
