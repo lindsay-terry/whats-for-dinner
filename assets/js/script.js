@@ -207,6 +207,8 @@ function createDrinkCard(drinks) {
 
     const drinkCard = document.createElement('div');
     drinkCard.setAttribute('class', 'card');
+    //Set drink ID as data attribute for saving to local storage if user chooses to save
+    drinkCard.setAttribute('data-drink-id', selectedDrink[0].idDrink);
 
     const drinkHeader = document.createElement('div');
     drinkHeader.setAttribute('class', 'card-divider');
@@ -251,8 +253,17 @@ function renderDrinkCard(drinks) {
     const drinkDiv = $('#drink-div');
     drinkDiv.empty();
 
+    //create button to save drink recipe to local storage
+    const saveDrinkButton = document.createElement('button');
+    saveDrinkButton.textContent = 'Save Recipe';
+    saveDrinkButton.setAttribute('class', 'button custom-btn-clr');
+
     //call function to create drink card and append to div
     drinkDiv.append(createDrinkCard(drinks));
+    //Sets drink ID as data attribute to save drink button
+    saveDrinkButton.setAttribute('data-drink-id', drinks.drinks[0].idDrink);
+    //appends button beneath card
+    drinkDiv.append(saveDrinkButton);
 
 
     
