@@ -12,6 +12,7 @@
 
 .custom-btn-clr {
 background-color: var(--orange);
+border-radius: 7px;
 }
 
 .custom-btn-clr:hover {
@@ -113,7 +114,7 @@ background-color: var(--orange);
 }
 
 .social-footer .menu a:hover {
-color: #000000;
+color: var(--dark-purple);
 font-size: 1.2rem;
 }
 
