@@ -278,7 +278,24 @@ function renderMealStorage() {
     }
 } 
 
+//renders drinks based on IDs in local storage
+function renderDrinkStorage() {
+    const savedDrinks = readDrinkStorage();
+    //empty div to avoid double rendering
+    $('#saved-drinks').empty();
+    for (let i = 0; i < savedDrinks.length; i++) {
 
+        const drinkIdUrl = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${savedDrinks[i]}`;
+        fetch (drinkIdUrl)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function (data) {
+            //calls function to render drink in modal
+            $('#saved-drinks').append((createDrinkCard(data)));
+        })
+    }
+}
 
 
 // Event listener to render clicked on drink
@@ -307,6 +324,7 @@ $('#cards-container').on('click', '.custom-btn-clr', function(event) {
 
 $('#saveRecipes').on('click', function(event){
     renderMealStorage();
+    renderDrinkStorage();
     event.preventDefault();
     
 }
