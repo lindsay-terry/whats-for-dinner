@@ -64,15 +64,17 @@ function createMealCard (meals) {
         mealCard.setAttribute('data-meal-id', mealsArray[0].idMeal);
 
         const mealName = document.createElement('h5');
-        mealName.setAttribute('class','card-divider');
         mealName.textContent = mealsArray[0].strMeal;
+        mealName.setAttribute('class','card-divider align-center'); //added today
+        mealName.setAttribute('style','background-color:#6fb28eff;'); //added today
 
         const mealImg = document.createElement('img');
         mealImg.setAttribute('src', `${mealsArray[0].strMealThumb}/preview`);
         mealImg.setAttribute('style','height:200px;', 'display:inline');
+        mealImg.setAttribute('class','align-center'); // added today
 
         const addedIngredientDiv = document.createElement('div');
-        addedIngredientDiv.setAttribute('class', 'flex-container');
+        addedIngredientDiv.setAttribute('class', 'flex-container align-spaced');
 
         const ingredientList = document.createElement('ul');
 
@@ -93,9 +95,9 @@ function createMealCard (meals) {
         
         //Appends children elements to the cards
         mealCard.appendChild(mealName);
-        addedIngredientDiv.appendChild(mealImg);
         mealCard.appendChild(addedIngredientDiv); 
         addedIngredientDiv.appendChild(ingredientList);
+        addedIngredientDiv.appendChild(mealImg);
         mealCard.appendChild(recipeInstructions);
 
         cardsContainer.appendChild(mealCard); //could be a problem
@@ -111,19 +113,19 @@ function createMealCard (meals) {
 
 }
 
-    // function renderMealCard(meals) {
-    //     cardsContainer.innerHTML = '';
-    //     console.log(meals.meals[0]);
+    function renderMealCard(meals) {
+        cardsContainer.innerHTML = '';
+        console.log(meals.meals[0]);
 
-    //     const saveMealButton = document.createElement('button'); //save button potentially not needed with local storage
-    //     saveMealButton.setAttribute('class', 'button custom-btn-clr');
-    //     saveMealButton.setAttribute('data-meal-id', meals.meals[0].idMeal);
-    //     saveMealButton.textContent = 'Save Recipe';
-    //     //append button beneath meal card
-    //     cardsContainer.append(createMealCard(meals.meals));
+        const saveMealButton = document.createElement('button'); //save button potentially not needed with local storage
+        saveMealButton.setAttribute('class', 'button custom-btn-clr');
+        saveMealButton.setAttribute('data-meal-id', meals.meals[0].idMeal);
+        saveMealButton.textContent = 'Save Recipe';
+        //append button beneath meal card
+        cardsContainer.append(createMealCard(meals.meals));
 
-    //     cardsContainer.appendChild(saveMealButton);
-    // }
+        cardsContainer.appendChild(saveMealButton);
+    }
 
 //Drink card coding
 //Event listener for submit button in dropdown menu
