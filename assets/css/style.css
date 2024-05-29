@@ -23,24 +23,18 @@ background-color: var(--orange);
   color: var(--sage);
 }
 
-.custom-btn-clr:hover {
-  background-color: var(--red);
-}
-
-.custom-btn-clr:focus{
-  background-color: var(--brown);
-}
-
 .large-article-header {
-  background: url("../images/fruit.jpg") no-repeat 50% 98%;
+  background: url("../images/fruit.jpg") no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
   background-size: cover;
-  height: 31.25rem;
+  height: 500px;
   position: relative;
 }
 
-@media screen and (max-width: 39.9375em) {
+@media screen and (max-width: 638px) {
   .large-article-header {
-    height: 20.83333rem;
+    height: 333px;
   }
 }
 
@@ -83,6 +77,7 @@ background-color: var(--orange);
   line-height: 3.125rem;
   color: #fefefe;
   font-weight: 600;
+  text-shadow: 5px 5px 3px var(--dark-purple);
 }
 
 @media screen and (max-width: 39.9375em) {
