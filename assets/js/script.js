@@ -42,6 +42,7 @@ $('#meal-button').on('click', function(event) {
     .then(function (data) {
         console.log(data);
         createMealCard(data);
+        // renderMealCard(data);
     })
 });
 
@@ -52,7 +53,7 @@ const cardsContainer = document.querySelector("#cards-container");
 //function for creating card elements
 function createMealCard (meals) { 
         // Clears existing meal cards
-        cardsContainer.innerHTML = '';
+        cardsContainer.innerHTML = ''; //clearing div everytime we click, maybe needs to be in a different function
 
         const mealsArray = meals.meals;
         const mealData = mealsArray[0];
@@ -97,17 +98,32 @@ function createMealCard (meals) {
         addedIngredientDiv.appendChild(ingredientList);
         mealCard.appendChild(recipeInstructions);
 
-        cardsContainer.appendChild(mealCard);
+        cardsContainer.appendChild(mealCard); //could be a problem
 
-        //create save button to save meal to local storage
-        const saveMealButton = document.createElement('button');
+        // create save button to save meal to local storage
+        const saveMealButton = document.createElement('button'); //save button potentially not needed with local storage
         saveMealButton.setAttribute('class', 'button custom-btn-clr');
         saveMealButton.setAttribute('data-meal-id', mealsArray[0].idMeal);
         saveMealButton.textContent = 'Save Recipe';
         //append button beneath meal card
         cardsContainer.appendChild(saveMealButton);
 
+
 }
+
+    // function renderMealCard(meals) {
+    //     cardsContainer.innerHTML = '';
+    //     console.log(meals.meals[0]);
+
+    //     const saveMealButton = document.createElement('button'); //save button potentially not needed with local storage
+    //     saveMealButton.setAttribute('class', 'button custom-btn-clr');
+    //     saveMealButton.setAttribute('data-meal-id', meals.meals[0].idMeal);
+    //     saveMealButton.textContent = 'Save Recipe';
+    //     //append button beneath meal card
+    //     cardsContainer.append(createMealCard(meals.meals));
+
+    //     cardsContainer.appendChild(saveMealButton);
+    // }
 
 //Drink card coding
 //Event listener for submit button in dropdown menu
@@ -242,6 +258,28 @@ function renderDrinkCard(drinks) {
     drinkDiv.append(saveDrinkButton);
 }
 
+// function createMealCardForStorage() {
+//     const mealCard = document.createElement('div');
+//         mealCard.setAttribute('class', 'card');
+// }
+
+function renderMealStorage() {
+    const savedMeals = readMealStorage();
+    for (let i = 0; i < savedMeals.length; i++){
+        const mealIdURL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${savedMeals[i]}`
+            fetch(mealIdURL)
+            .then(function(response) {
+            return response.json();
+        })
+            .then(function (data) {
+                console.log(data);
+                createMealCard(data);
+        })
+    }
+} 
+
+
+
 
 // Event listener to render clicked on drink
 $('#drink-div').on("click", ".drink-title", fetchDrinkInfo);
@@ -266,6 +304,13 @@ $('#cards-container').on('click', '.custom-btn-clr', function(event) {
     saveMealToStorage();
     console.log(savedMeals);
 })
+
+$('#saveRecipes').on('click', function(event){
+    renderMealStorage();
+    event.preventDefault();
+    
+}
+)
 
 
 
