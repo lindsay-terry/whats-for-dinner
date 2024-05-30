@@ -24,6 +24,12 @@ border-radius: 7px;
   color: var(--sage);
 }
 
+.button-background {
+  background-color: var(--sage);
+  border-right: solid 6px var(--cardinal);
+  padding: 6px;
+}
+
 .large-article-header {
   background: url("../images/fruit.jpg") no-repeat;
   background-position-x: center;
@@ -118,3 +124,17 @@ color: var(--dark-purple);
 font-size: 1.2rem;
 }
 
+.modal {
+  background-color: var(--cardinal);
+  border: solid var(--dark-purple) 3px;
+  border-radius: 7px;
+}
+
+.modal-header h2 {
+  color: var(--dark-purple);
+  background-color: var(--sage);
+  border: solid var(--dark-purple) 3px;
+  border-radius: 7px;
+  padding: 6px;
+  font-family: Georgia, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
