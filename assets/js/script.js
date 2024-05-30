@@ -64,7 +64,7 @@ function createMealCard (meals) {
         const mealName = document.createElement('h5');
         mealName.textContent = mealsArray[0].strMeal;
         mealName.setAttribute('class','card-divider align-center');
-        mealName.setAttribute('style','background-color:#6fb28eff;');
+        mealName.setAttribute('style','background-color: var(--mint);');
 
         const mealImg = document.createElement('img');
         mealImg.setAttribute('src', `${mealsArray[0].strMealThumb}/preview`);
@@ -214,15 +214,17 @@ function createDrinkCard(drinks) {
 
     const drinkCard = document.createElement('div');
     drinkCard.setAttribute('class', 'card');
+    drinkCard.setAttribute('style', 'border-radius: 0.5em;');
     //Set ID as data attribute for saving to local storage if user chooses
     drinkCard.setAttribute('data-drink-id', selectedDrink[0].idDrink);
 
-    const drinkHeader = document.createElement('div');
-    drinkHeader.setAttribute('class', 'card-divider');
+    const drinkHeader = document.createElement('h5');
+    drinkHeader.setAttribute('class', 'card-divider align-center');
+    drinkHeader.setAttribute('style', 'background-color: var(--mint);');
     drinkHeader.textContent = selectedDrink[0].strDrink;
 
     const picIngredientDiv = document.createElement('div');
-    picIngredientDiv.setAttribute('class', 'flex-container');
+    picIngredientDiv.setAttribute('class', 'flex-container align-spaced');
 
     const drinkPicture = document.createElement('img');
     drinkPicture.setAttribute('src', `${selectedDrink[0].strDrinkThumb}/preview`);
@@ -248,8 +250,8 @@ function createDrinkCard(drinks) {
 
     drinkCard.appendChild(drinkHeader);
     drinkCard.appendChild(picIngredientDiv);
-    picIngredientDiv.appendChild(drinkPicture);
     picIngredientDiv.appendChild(drinkIngredients);
+    picIngredientDiv.appendChild(drinkPicture);
     drinkCard.appendChild(instructionDiv);
     return drinkCard;
 }
