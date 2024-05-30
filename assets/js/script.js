@@ -92,6 +92,7 @@ function createMealCard (meals) {
         }
 
         const recipeInstructions = document.createElement('div');
+        recipeInstructions.setAttribute('class','card-section'); //added today
         recipeInstructions.textContent = mealsArray[0].strInstructions 
         
         //Appends children elements to the cards
