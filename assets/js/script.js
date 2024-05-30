@@ -43,6 +43,9 @@ $('#meal-button').on('click', function(event) {
         console.log(data);
         renderMealCard(data); 
     })
+    .catch(function(error) {
+        $('#cards-container').text('Error generating meal.  Try again later.')
+    })
 });
 
 //Meal card coding
@@ -134,6 +137,7 @@ function createMealCard (meals) {
             })
             .catch(function(error) {
                 console.error('Error fetching meal data:', error);
+                $('#saved-meals').text('Error remembering meals.  Try again later.')
             });
         }
     }
@@ -160,7 +164,10 @@ function fetchDrinkList() {
 })
     .then(function (data) {
     displayDrinkList(data);
+})  .catch(function(error) {
+    $('#drink-div').text('Error generating drinks.  Try again later.')
 })
+
     } else if (drinkChoice) { 
         fetch(drinkApiUrl)
         .then(function(response) {
@@ -168,6 +175,9 @@ function fetchDrinkList() {
         })
         .then(function(data) {
             displayDrinkList(data);
+        })
+        .catch(function(error) {
+        $('#drink-div').text('Error generating drinks.  Try again later.')
         })
     }
 }
@@ -185,6 +195,7 @@ function displayDrinkList(drinks) {
 
         drinkTitle.setAttribute("class", "drink-title");
         drinkTitle.setAttribute("data-drink-id", drinks.idDrink);
+        drinkTitle.setAttribute('style', 'cursor: pointer;')
 
         drinkTitle.textContent = drinks.strDrink;
         drinkEntry.append(drinkTitle);
@@ -206,6 +217,9 @@ function fetchDrinkInfo(event) {
     //call function to render drink card
     renderDrinkCard(data);
     })
+    .catch(function(error) {
+        $('#drink-div').text('Error generating drinks.  Try again later.')
+        })
     }
 
 //create the elements associated with the drink card
@@ -290,6 +304,9 @@ function renderDrinkStorage() {
             //calls function to render drink in modal
             $('#saved-drinks').append((createDrinkCard(data)));
         })
+        .catch(function(error) {
+            $('#saved-drinks').text('Error remembering drinks.  Try again later.')
+            })
     }
 }
 
