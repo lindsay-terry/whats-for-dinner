@@ -62,18 +62,16 @@
                         Saved Recipes
                     </button>
                     <div class="reveal large modal" id="Modal1" data-reveal>
-                        <div class="flex-container align-spaced modal-header">
-                            <h2>Saved Meals</h2>
-                            <h2>Saved Drinks</h2>
-                        </div>
-                      
-                      <!-- <p class="lead">Display Meals</p> -->
+                      <div class="flex-container align-spaced modal-header hide-for-small-only">
+                        <h2>Saved Meals</h2>
+                        <h2>Saved Drinks</h2>
+                      </div>
                       <div class="flex-container grid-x">
-                        <div class="cell small-12 medium-6 medium-cell-block-y" style="height: 70vh;" id="saved-meals">
-
+                        <div class="cell small-12 medium-6" style="height: 70vh; overflow-y: scroll" id="saved-meals">
+                            <!-- saved meals render here -->
                         </div>
-                        <div class="cell small-12 medium-6 medium-cell-block-y" style="height: 70vh;" id="saved-drinks">
-
+                        <div class="cell small-12 medium-6" style="height: 70vh; overflow-y: scroll" id="saved-drinks">
+                            <!-- saved drinks render here -->
                         </div>
                       </div>
                       <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -87,12 +85,12 @@
                 <div class="grid-x flex-container small-flex-dir-column align-spaced">
                     <div class="cell small-12 medium-6 large-6">
                         <div class="grid-x grid-frame">
-                          <div class="medium-cell-block-y" id ="cards-container" style="height: 50vh;"></div>
+                          <div id ="cards-container" style="height: 50vh; overflow-y: scroll"></div>
                         </div>
                     </div>
                     <div class="cell small-12 medium-6 large-6">
                         <div class="grid-x grid-frame">
-                            <div class="medium-cell-block-y" id="drink-div" style="height: 50vh;"></div>
+                            <div id="drink-div" style="height: 50vh; overflow-y: scroll"></div>
                             
                         </div>
                     </div>
