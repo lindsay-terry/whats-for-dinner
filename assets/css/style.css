@@ -109,21 +109,20 @@ box-shadow: 3px 3px 3px var(--cardinal);
 
 
 .social-footer {
-  height: 6rem;
+  height: 2.5rem; 
   background-color: var(--cardinal);
   color: #fff;
-  padding: 1rem;
-  font-size: 1.2rem;
 }
 
 .social-footer .menu a {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
+  display:flex;
 }
 
 .social-footer .menu a:hover {
 color: var(--dark-purple);
-font-size: 1.2rem;
+font-size: 0.9rem;
 }
 
 .modal {
