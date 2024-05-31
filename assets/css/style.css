@@ -2,6 +2,7 @@
   font-family: Georgia, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+/* Color theme for application */
 :root{
     --cardinal: #b2313aff;
     --sage: #cccba5ff;
@@ -10,16 +11,19 @@
     --dark-purple: #341827ff;  
 }
 
+/* Button styling */
 .custom-btn-clr {
 background-color: var(--orange);
 border-radius: 7px;
 box-shadow: 3px 3px 3px var(--cardinal);
 }
 
+/* Button hover styling */
 .custom-btn-clr:hover {
   background-color: var(--cardinal);
 }
 
+/* Button focus styling */
 .custom-btn-clr:focus{
   background-color: var(--dark-purple);
   color: var(--sage);
@@ -32,6 +36,7 @@ box-shadow: 3px 3px 3px var(--cardinal);
   padding: 6px;
 }
 
+/* Image positioning for header */
 .large-article-header {
   background: url("../images/fruit.jpg") no-repeat;
   background-position-x: center;
@@ -41,6 +46,7 @@ box-shadow: 3px 3px 3px var(--cardinal);
   position: relative;
 }
 
+/* Header styling */
 @media screen and (max-width: 638px) {
   .large-article-header {
     height: 333px;
@@ -78,10 +84,12 @@ box-shadow: 3px 3px 3px var(--cardinal);
   }
 }
 
+/* Header color styling */
 .large-article-header-content {
   color: #fefefe;
 }
 
+/* Header title styling */
 .large-article-header-content .article-title h1 {
   line-height: 3.125rem;
   color: #fefefe;
@@ -95,6 +103,7 @@ box-shadow: 3px 3px 3px var(--cardinal);
   }
 }
 
+/* Header positioning and responsivness */
 .large-article-header-content .article-details {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -107,7 +116,7 @@ box-shadow: 3px 3px 3px var(--cardinal);
           justify-content: space-between;
 }
 
-
+/* Footer styling */
 .social-footer {
   height: 2.5rem; 
   background-color: var(--cardinal);
@@ -120,11 +129,13 @@ box-shadow: 3px 3px 3px var(--cardinal);
   display:flex;
 }
 
+/* Footer hover styling */
 .social-footer .menu a:hover {
 color: var(--dark-purple);
 font-size: 0.9rem;
 }
 
+/* Modal styling */
 .modal {
   border: solid var(--dark-purple) 3px;
   border-radius: 7px;
