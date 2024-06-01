@@ -73,6 +73,7 @@ function createMealCard (meals) {
         mealImg.setAttribute('src', `${mealsArray[0].strMealThumb}/preview`);
         mealImg.setAttribute('style','height:200px;', 'display:inline');
         mealImg.setAttribute('class','align-center');
+        mealImg.setAttribute('alt', `Image of ${mealsArray[0].strMeal}.`);
 
         const addedIngredientDiv = document.createElement('div');
         addedIngredientDiv.setAttribute('class', 'flex-container align-spaced');
@@ -259,6 +260,7 @@ function createDrinkCard(drinks) {
 
     const drinkPicture = document.createElement('img');
     drinkPicture.setAttribute('src', `${selectedDrink[0].strDrinkThumb}/preview`);
+    drinkPicture.setAttribute('alt', `Image of ${selectedDrink[0].strDrink}.`);
 
     const instructionDiv = document.createElement('div');
     instructionDiv.setAttribute('class', 'card-section');
