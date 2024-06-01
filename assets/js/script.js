@@ -1,4 +1,5 @@
-$(document).foundation(); // Allows modal to open
+// For Foundation Framework 
+$(document).foundation(); 
 
 //setting up local storage for meals
 let savedMeals = JSON.parse(localStorage.getItem('savedMeals')) ||[];
@@ -40,7 +41,6 @@ $('#meal-button').on('click', function(event) {
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
         renderMealCard(data); 
     })
     .catch(function(error) {
@@ -49,7 +49,6 @@ $('#meal-button').on('click', function(event) {
 });
 
 //Meal card coding
-
 //Displays cards in the cards-container div
 const cardsContainer = document.querySelector("#cards-container"); 
 
@@ -110,7 +109,6 @@ function createMealCard (meals) {
     function renderMealCard(meals) {
         //clears existing meal card
         cardsContainer.innerHTML = '';
-        console.log(meals);
 
         //creates save meal recipe button
         const saveMealButton = document.createElement('button'); 
@@ -137,6 +135,11 @@ function createMealCard (meals) {
             })
                 .then(function (data) {
                 $('#saved-meals').append(createMealCard(data));
+                const deleteMealBtn = document.createElement('button');
+                deleteMealBtn.setAttribute('class', 'button custom-btn-clr');
+                deleteMealBtn.setAttribute('data-meal-id', data.meals[0].idMeal);
+                deleteMealBtn.textContent = "Delete Recipe";
+                $('#saved-meals').append(deleteMealBtn);
             })
             .catch(function(error) {
                 console.error('Error fetching meal data:', error);
@@ -145,15 +148,26 @@ function createMealCard (meals) {
         }
     }
 
+//Function to delete meal cards from saved recipes modal
+function handleDeleteMeal(event) {
+    readMealStorage();
+    const deleteButton = event.target;
+    const btnId = deleteButton.dataset.mealId;
+    const card = deleteButton.previousElementSibling;
+    const cardId = card.dataset.mealId;
+
+    if (btnId === cardId) {
+        const index = savedMeals.findIndex((btnId) => btnId === cardId);
+        savedMeals.splice(index, 1);
+    }
+
+    deleteButton.remove();
+    card.remove();
+    saveMealToStorage(savedMeals);
+
+}
 
 //Drink card coding
-//Event listener for submit button in dropdown menu
-$('#drink-form').on('click', function(event) {
-    event.preventDefault();
-   fetchDrinkList();
-
-});
-
 //Function to retrieve drink lists based on alcohol type
 function fetchDrinkList() {
     const drinkChoice = $('#drink-options').val();
@@ -306,6 +320,11 @@ function renderDrinkStorage() {
         .then(function (data) {
             //calls function to render drink in modal
             $('#saved-drinks').append((createDrinkCard(data)));
+            const deleteDrinkBtn = document.createElement('button');
+            deleteDrinkBtn.setAttribute('class', 'button custom-btn-clr');
+            deleteDrinkBtn.setAttribute('data-drink-id', data.drinks[0].idDrink);
+            deleteDrinkBtn.textContent = "Delete Recipe";
+            $('#saved-drinks').append(deleteDrinkBtn);
         })
         .catch(function(error) {
             $('#saved-drinks').text('Error remembering drinks.  Try again later.')
@@ -313,9 +332,35 @@ function renderDrinkStorage() {
     }
 }
 
+//Delete drink from saved recipes modal
+function handleDeleteDrink(event) {
+    readDrinkStorage();
+    const deleteButton = event.target;
+    const btnId = deleteButton.dataset.drinkId;
+    const card = deleteButton.previousElementSibling;
+    const cardId = card.dataset.drinkId;
+
+    if (btnId === cardId) {
+        const index = savedDrinks.findIndex((btnId) => btnId === cardId);
+        savedDrinks.splice(index, 1);
+    }
+
+    deleteButton.remove();
+    card.remove();
+    saveDrinkToStorage(savedDrinks);
+}
+
+//Event Listeners:
+//Event listener for submit button in dropdown menu
+$('#drink-form').on('click', function(event) {
+    event.preventDefault();
+   fetchDrinkList();
+
+});
 
 // Event listener to render clicked on drink
 $('#drink-div').on("click", ".drink-title", fetchDrinkInfo);
+
 //Event listener to save drink recipe to local storage
 $('#drink-div').on('click', '.custom-btn-clr', function(event) {
     readDrinkStorage();
@@ -324,7 +369,6 @@ $('#drink-div').on('click', '.custom-btn-clr', function(event) {
     const savedId = saveButton.dataset.drinkId;
     savedDrinks.push(savedId);
     saveDrinkToStorage();
-    console.log(savedDrinks);
 })
 
 // Event listener to save meal recipe to local storage
@@ -335,24 +379,22 @@ $('#cards-container').on('click', '.custom-btn-clr', function(event) {
     const savedId = saveButton.dataset.mealId;
     savedMeals.push(savedId);
     saveMealToStorage();
-    console.log(savedMeals);
 })
+
 // Event listener to render meal and drink recipes to modal from local storage
 $('#saveRecipes').on('click', function(event){
     renderMealStorage();
     renderDrinkStorage();
+    event.preventDefault(); 
+})
+
+//Event listeners to delete meal and drink recipes
+$('#saved-meals').on('click', '.custom-btn-clr', function(event) {
     event.preventDefault();
-    
-}
-)
+    handleDeleteMeal(event);
+})
 
-
-
-//Fetch template
-// fetch()
-// .then(function(response) {
-//     return response.json();
-// })
-// .then(function (data) {
-//     console.log(data);
-// })
+$('#saved-drinks').on('click', '.custom-btn-clr', function(event) {
+    event.preventDefault();
+    handleDeleteDrink(event);
+})
